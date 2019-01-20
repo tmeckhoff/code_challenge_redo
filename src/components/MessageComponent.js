@@ -145,7 +145,7 @@ class MessageComponent extends Component {
         </div>
       <br />
         <div>
-          {!this.state.selectedRequiredFields && <p>Constructing a message requires selecting a guest, company and message!</p>}
+          {!this.state.selectedRequiredFields && <p><b>Creating a message requires selecting a guest, company and message or constructing your own message!</b></p>}
           <button name="Preview" id="previewMessage" type="button"
           onClick={this.handleMessage}>
           Preview Message

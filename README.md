@@ -14,7 +14,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 #### Updated to ES6
   I made this change just because I am accustomed now with using it, and prefer it.
 #### Restructured files
-  Before I had all the app's files under /src. Adding components in /components and the JSON files in /data makes it easier to understand where everything is and makes the files more meaningful what the files are for.
+  Before I had all the app's files under /src. Adding components in /components and the JSON files in /data makes it easier to understand where everything is and makes it more meaningful for what the files are for.
 #### Renamed variables/refactored UI
   Previously my variable names where too generic and/or obtuse, so I renamed them to be more meaningful and understandable. I also refactored the UI a little, like what things were named and when to display certain things.
 #### Covered edge cases
