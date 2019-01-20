@@ -8,18 +8,20 @@ npm install, then:
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### An overview of design decisions
 
-Given the requirements for user input, selecting/creating, it made sense to me to build a UI interface even though it wasn't required. My solution for having the user construct their own message was obviously not ideal, and since I am not throwing an error if the constructedMessage is not the right format, I added the extra step of constructing the message before sending it. I think this extra step would be valuable whether you were selecting or constructing your own message, to ensure everything is correct before you send it to the guest.
+### What I changed from previous submission
 
-### What language you picked and why
-
-I went with React because I hadn't done any UI/React work inawhile so thought it'd be good for a refresher. And using Create React App you can have a fully functioning app very quickly.
-
-### Your process for verifying the correctness of your program
-
-I ran through a few scenarios as a user to ensure everything was functioning as expected. This was how I found that if you created a message with a selectedMessage and then tried to create a new message with a constructedMessage it didn't work. That's why I setState to '' for both of those in the log change functions and did an if check before sending either to the template function.
-
-### What didn't you get to, or what else might you do with more time?
-
-For the text field for the user constructing a message, I had the idea of maybe using react-draggable and creating divs for each of the placeholders and allowing the user to move the placeholders into the text field where they wanted them so they wouldn't have to worry about them being in the right format. A change I'd like to make for the dropdowns is using react-select instead of html5 select and resetting the dropdowns after the user sends the message.
+1. Updated to ES6
+  I made this change just because I am accustomed now with using it, and prefer it.
+2. Restructured files
+  Before I had all the app files under /src. Adding components in /components and the JSON files in /data makes it easier to understand where everything is and makes the files more meaningful.
+3. Renamed variables
+  Previously my variable names where too generic and/or obtuse, so I renamed them to be more meaningful and understandable.
+4. Covered edge cases
+  This was my biggest flaw from the previous submission, I didn't have anything in place to deal with edge cases.
+5. Changed construct message feature
+  Going back over the instructions, I realized that I likely misinterpreted what you were looking for with the construct message feature. Given that the complexity involved in being able to populate a user constructed message with the values selected from the dropdown, you were probably just wanting the ability to have the user enter a message without those values.
+6. Creating additional components
+  Previously I had all the functionality in one component, MessageComponent, which kind of defeats the whole purpose of using React. Given that we are dealing with 3 sources of data, I thought it made sense to have 3 components based on that data.
+7. Refactor handleMessage function in MessageComponent
+  Previously there was a lot going on in that one function, so I pulled out all the time/greeting related logic to its own function and also refactored how I was determining time of day based on timezone, using switch case instead of if/else if/else and it looks cleaner and easier to understand.

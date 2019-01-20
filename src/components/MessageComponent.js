@@ -53,8 +53,10 @@ class MessageComponent extends Component {
   }
 
   constructMessageTemplate = (selectedMessageTemplate, selectedMessageVars) => {
-    for(const prop in selectedMessageVars) {
-      selectedMessageTemplate = selectedMessageTemplate.replace(new RegExp('{'+ prop +'}','gi'), selectedMessageVars[prop]);
+    if(selectedMessageTemplate.includes('{')) {
+      for(const prop in selectedMessageVars) {
+        selectedMessageTemplate = selectedMessageTemplate.replace(new RegExp('{'+ prop +'}','gi'), selectedMessageVars[prop]);
+      }
     }
     this.setState({
       message: selectedMessageTemplate
@@ -98,16 +100,13 @@ class MessageComponent extends Component {
       "company": this.state.selectedCompany.company, "timeOfDay": this.getTimeOfDay(), "city": this.state.selectedCompany.city};
     }
 
-    if(Object.keys(selectedMessageVars).length) {
-      if(this.state.selectedMessage){
-        this.constructMessageTemplate(this.state.selectedMessage, selectedMessageVars);
-      } else if(this.state.constructedMessage) {
-        this.constructMessageTemplate(this.state.constructedMessage, selectedMessageVars);
-      } else {
-        this.setState({selectedRequiredFields: false});
-      }
+    if(Object.keys(selectedMessageVars).length && this.state.selectedMessage) {
+      this.constructMessageTemplate(this.state.selectedMessage, selectedMessageVars);
       this.setState({showSendMessage: false});
       this.setState({selectedRequiredFields: true});
+    } else if(this.state.constructedMessage) {
+      this.setState({selectedRequiredFields: true});
+      this.constructMessageTemplate(this.state.constructedMessage, selectedMessageVars);
     } else {
       this.setState({selectedRequiredFields: false});
     }
