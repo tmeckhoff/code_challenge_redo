@@ -83,7 +83,7 @@ class MessageComponent extends Component {
 
         if(localTime <= 11){
           timeOfDay = 'Morning';
-        } else if(localTime >= 12 && localTime <= 18){
+        } else if(localTime >= 12 && localTime <= 17){
           timeOfDay = 'Afternoon';
         } else {
           timeOfDay = 'Evening';
