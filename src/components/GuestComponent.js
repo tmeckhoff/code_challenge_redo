@@ -12,8 +12,6 @@ class GuestComponent extends Component {
   }
 
 
-
-
   render() {
     return (
       <div>

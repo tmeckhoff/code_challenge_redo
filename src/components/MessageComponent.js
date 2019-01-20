@@ -48,7 +48,7 @@ class MessageComponent extends Component {
     });
   }
 
-  sendMessage = val => {
+  sendMessage = () => {
     this.setState({showSendMessage: true})
   }
 
@@ -93,7 +93,7 @@ class MessageComponent extends Component {
 
   }
 
-  handleMessage = val => {
+  handleMessage = () => {
     let selectedMessageVars = {};
     if(Object.keys(this.state.selectedGuest).length && Object.keys(this.state.selectedCompany).length) {
       selectedMessageVars =   {"firstName": this.state.selectedGuest.firstName, "lastName": this.state.selectedGuest.lastName, "roomNumber": this.state.selectedGuest.reservation.roomNumber,
@@ -118,46 +118,49 @@ class MessageComponent extends Component {
   render() {
     return (
       <div>
-      <div>
-      <GuestComponent setSelectedGuest={this.setSelectedGuest} />
-      </div><br/>
-      <div>
-      <CompanyComponent setSelectedCompany={this.setSelectedCompany} />
-      </div><br/>
-      <div>
-      <label>Select A Message</label><br/>
-      <select name="selectMessage" id="selectMessage" ref="selectMessage"
-      onChange={this.setSelectedMessage}>
-      <option value="">Please Choose...</option>
-      {messages.map(message =>
-        <option key={message.id} value={message.message}>{message.message}</option>
-      )}
-      </select>
-      </div><br/>
-      <div>
-      <label>Or Construct Your Own Message</label><br/>
-      <p>**Message will not include selected guest or company.**</p>
-      <input type="text" name="constructMessage" ref="constructMessage" size="150" placeholder="Your message here...."
-      value={this.state.constructedMessage}  onChange={this.setConstructedMessage}/>
-      </div>
+        <div>
+          <GuestComponent setSelectedGuest={this.setSelectedGuest} />
+        </div>
+        <br/>
+        <div>
+          <CompanyComponent setSelectedCompany={this.setSelectedCompany} />
+        </div>
+      <br/>
+        <div>
+          <label>Select A Message</label><br/>
+          <select name="selectMessage" id="selectMessage" ref="selectMessage"
+          onChange={this.setSelectedMessage}>
+          <option value="">Please Choose...</option>
+          {messages.map(message =>
+            <option key={message.id} value={message.message}>{message.message}</option>
+          )}
+          </select>
+        </div>
+      <br/>
+        <div>
+          <label>Or Construct Your Own Message</label><br/>
+          <p><i>Message will not include selected guest or company.</i></p>
+          <input type="text" name="constructMessage" ref="constructMessage" size="150" placeholder="Your message here...."
+          value={this.state.constructedMessage}  onChange={this.setConstructedMessage}/>
+        </div>
       <br />
-      <div>
-      {!this.state.selectedRequiredFields && <p>Constructing a message requires selecting a guest, company and message!</p>}
-      <button name="Construct" id="constructMessage" type="button"
-      onClick={this.handleMessage}>
-      Preview Message
-      </button>
-      <br />
-      {this.state.message && !this.state.showSendMessage && <div><p>Here is a preview of the message you will be sending to your guest:</p><br /><p> {this.state.message}</p></div>}
-      </div>
-      <div>
-      {this.state.message && <button name="Send" id="sendMessage" type="button"
-      onClick={this.sendMessage}>
-      Send Message
-      </button>}
-      <br />
-      {this.state.showSendMessage && <div><p>Here is the message you sent your guest:</p><br /><p> {this.state.message}</p></div>}
-      </div>
+        <div>
+          {!this.state.selectedRequiredFields && <p>Constructing a message requires selecting a guest, company and message!</p>}
+          <button name="Preview" id="previewMessage" type="button"
+          onClick={this.handleMessage}>
+          Preview Message
+          </button>
+        <br />
+        {this.state.message && !this.state.showSendMessage && <div><p>Here is a preview of the message you will be sending to your guest:</p><br /><p> {this.state.message}</p></div>}
+        </div>
+        <div>
+          {this.state.message && <button name="Send" id="sendMessage" type="button"
+          onClick={this.sendMessage}>
+          Send Message
+          </button>}
+        <br />
+          {this.state.showSendMessage && <div><p>Here is the message you sent your guest:</p><br /><p> {this.state.message}</p></div>}
+        </div>
       </div>
     );
 

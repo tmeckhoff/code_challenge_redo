@@ -12,8 +12,6 @@ class CompanyComponent extends Component {
   }
 
 
-
-
   render() {
     return (
         <div>
