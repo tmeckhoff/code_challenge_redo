@@ -79,11 +79,11 @@ class MessageComponent extends Component {
             break;
             // skip default case
         }
-        const localTime = moment.tz(timeZone).format('HH');
+        const localTime = moment.tz(timeZone).hour();
 
         if(localTime <= 11){
           timeOfDay = 'Morning';
-        } else if(localTime >= 12 && localTime <= 17){
+        } else if(localTime >= 12 && localTime <= 18){
           timeOfDay = 'Afternoon';
         } else {
           timeOfDay = 'Evening';
