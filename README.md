@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 #### Restructured files
   Before I had all the app's files under /src. Adding components in /components and the JSON files in /data makes it easier to understand where everything is and makes it more meaningful for what the files are for.
 #### Renamed variables/refactored UI
-  Previously my variable names where too generic and/or obtuse, so I renamed them to be more meaningful and understandable. I also refactored the UI a little, like what things were named and when to display certain things.
+  Previously my variable names where too generic and/or obtuse, so I renamed them to be more meaningful and understandable. I also refactored the UI a little, what things were named and when to display certain things.
 #### Covered edge cases
   This was a big flaw from the previous submission, I didn't have anything in place to deal with edge cases. For example, what happens if they don't select a guest, company or message? I resolved this by adding if checks to ensure that the state has those values set if we are doing a select message vs construct message. If not, I am displaying error message to the user.
 #### Changed construct message feature
