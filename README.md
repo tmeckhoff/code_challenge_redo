@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Message Builder Application
 
-UI tool to construct a message to send to a hotel's customers.
+UI tool for hotels to build messages to send to its customers.
 
 ### Instructions for how to run the program
 
